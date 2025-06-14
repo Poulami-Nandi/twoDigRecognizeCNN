@@ -80,7 +80,6 @@ twoDigRecognizeCNN/
 | Section | Highlights | Figure |
 |---------|------------|--------|
 | **EDA & Visualisation** | pixel-intensity histograms, class balance | ![EDA](assets/eda_2_digits.png) |
-| **Data Pipeline** | NumPy stacks → `tf.data.Dataset` → on-the-fly augmentation | ![Pipeline]<pre> ```mermaid graph LR A[NumPy Stack] --> B[tf.data.Dataset] B --> C[On-the-fly Augmentation] ``` </pre> |
 | **Training** | `ReduceLROnPlateau`, `ModelCheckpoint`, `TensorBoard` callbacks | ![Training](assets/training_validation_acc.png) |
 | **Error Analysis** | visualise top-k mis-classifications | ![Errors](assets/training_loss_curves.png) |
 
