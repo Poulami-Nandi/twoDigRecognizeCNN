@@ -1,214 +1,139 @@
-<!-- ──────────────────────────────  B A N N E R  ────────────────────────────── -->
-
+<!-- Banner -->
 <p align="center">
-  <img src="assets/banner.png" alt="Two-Digit CNN" width="80%">
+  <img src="https://github.com/Poulami-Nandi/twoDigRecognizeCNN/blob/main/assets/banner.png" alt="Dr. Poulami Nandi Banner" width="100%" />
 </p>
 
-<h1 align="center">Two-Digit Hand-Written Number Recognition with CNN 🚀</h1>
+<h1 align="center">🧠 Two Digit Recognition using Convolutional Neural Network (CNN)</h1>
 
 <p align="center">
-  <b>Poulami Nandi, PhD &middot; Data Scientist | Quant Researcher</b><br/>
+  <b>Author:</b> Dr. Poulami Nandi | 
   <a href="https://www.linkedin.com/in/poulami-nandi-a8a12917b/">LinkedIn</a> | 
-  <a href="https://scholar.google.com/citations?user=bOYJeAYAAAAJ">Google Scholar</a> | 
-  <a href="https://github.com/Poulami-Nandi">GitHub Portfolio</a>
+  <a href="https://scholar.google.com/citations?user=KKlKH0kAAAAJ&hl=en">Google Scholar</a>
 </p>
 
 ---
 
-## 📖 Table of Contents
-1. [Project Motivation](#project-motivation)
-2. [Dataset](#dataset)
-3. [Model Architecture](#model-architecture)
-4. [Quick Start](#quick-start)
-5. [Re-producing Results](#re-producing-results)
-6. [Performance](#performance)
-7. [Inside the Notebook](#inside-the-notebook)
-8. [Research Extensions](#research-extensions)
-9. [Citation](#citation)
-10. [License](#license)
+## 📌 Project Overview  
+This project develops a robust Convolutional Neural Network (CNN) to recognize **two handwritten digits** from a single image. Unlike the standard MNIST challenge, each image contains two digits, turning this into a **multi-label, multi-output classification** problem. The CNN is architected with a shared convolutional base and separate output heads to simultaneously predict both digits.
 
 ---
 
-## Project Motivation
-Most MNIST examples focus on **single-digit** recognition.  
-In several computer-vision tasks (cheque reading, meter reading, postal codes, etc.) the model must interpret **multi-digit strings** holistically.
-
-This repository shows how to:
-
-* **Synthesise** a two-digit dataset by horizontally concatenating MNIST digits.  
-* **Scale** a CNN to classify 100 classes (00-99) instead of the usual 10.  
-* Achieve **> 98 % validation accuracy** with a lightweight network.
-
-The work doubles as an accessible demo of **tensor manipulation**, **data-augmentation**, and **Keras functional APIs**—skills equally valuable in my quantum-mechanics research where CNNs are repurposed to detect phase-transition patterns in simulated spin-lattices.
+## 🧪 Objective  
+- Build a PyTorch-based CNN capable of dual-digit classification.  
+- Optimize the model for balanced accuracy across both digit positions.  
+- Handle data preprocessing, training, evaluation, and submission generation.
 
 ---
 
-## Dataset
-| Split | Images | Resolution | Notes |
-|-------|--------|------------|-------|
-| Train | 99 000 | 28 × 56 px | 2× MNIST digits concatenated |
-| Test  | 20 000 | 28 × 56 px | Held-out for leaderboard style score |
+## 🧰 Tools & Technologies Used  
 
-<img src="assets/image_0.png" width="60%"/>
-
----
-
-## Model Architecture
-```text
-Input 28×56×1
-│
-├─ Conv2D(32,3×3) + ReLU
-├─ Conv2D(32,3×3) + ReLU
-├─ MaxPool2D(2×2)
-│
-├─ Conv2D(64,3×3) + ReLU
-├─ Conv2D(64,3×3) + ReLU
-├─ MaxPool2D(2×2)
-│
-├─ Flatten
-├─ Dense(256) + ReLU
-├─ Dropout(0.5)
-└─ Dense(100) + Softmax     → class 00-99
-```
-
-*(see [`twoDigRecognizeCNN.ipynb`](twoDigRecognizeCNN.ipynb) for the full, parametrised version)*
+| Category               | Tools & Libraries                                                                 |
+|------------------------|------------------------------------------------------------------------------------|
+| **Programming**        | Python 3.8+                                                                        |
+| **Deep Learning**      | PyTorch, Torchvision                                                               |
+| **Data Handling**      | Pandas, NumPy                                                                      |
+| **Visualization**      | Matplotlib, Seaborn                                                                |
+| **Training/Evaluation**| CrossEntropyLoss, Adam Optimizer, custom DatasetLoader                            |
+| **Deployment Ready**   | Jupyter Notebook, CSV Submission, Image Output Preview                            |
 
 ---
 
-## Quick Start
+## 📂 Project Structure  
 ```bash
-git clone https://github.com/Poulami-Nandi/twoDigRecognizeCNN.git
-cd twoDigRecognizeCNN
-
-# 1️⃣  create env & install
-conda env create -f environment.yml   # or pip install -r requirements.txt
-conda activate two-digit-cnn
-
-# 2️⃣  run end-to-end notebook
-jupyter notebook twoDigRecognizeCNN.ipynb
-```
-
-A ready-to-submit `submission_2d.csv` (Kaggle format) is generated at the end of the notebook.
-
----
-
-## Re-producing Results
-```bash
-python train.py  \
-  --epochs 25 \
-  --batch-size 128 \
-  --model_dir saved_models/ \
-  --log_dir   tensorboard_logs/
-```
-
-Key hyper-parameters are exposed via CLI flags.
-
----
-
-## Performance
-| Metric                  | Train | Validation |
-|-------------------------|-------|------------|
-| **Accuracy**            | **99.84 %** | **98.04 %** |
-| **Cross-Entropy Loss**  | 0.0051 | 0.0917 |
-
-Training curves:
-
-<img src="assets/image_1.png" width="48%"/> <img src="assets/image_2.png" width="48%"/>
-
-Confusion matrix:
-
-<img src="assets/image_3.png" width="70%"/>
-
----
-
-## Inside the Notebook
-| Section | Highlights | Figure |
-|---------|------------|--------|
-| **EDA & Visualisation** | pixel-intensity histograms, class balance | ![EDA](assets/image_4.png) |
-| **Data Pipeline** | NumPy stacks → `tf.data.Dataset` → on-the-fly augmentation | ![Pipeline](assets/image_5.png) |
-| **Training** | `ReduceLROnPlateau`, `ModelCheckpoint`, `TensorBoard` callbacks | ![Training](assets/image_6.png) |
-| **Error Analysis** | visualise top-k mis-classifications | ![Errors](assets/image_7.png) |
-
-*(12 additional figures are stored in `assets/` for reference.)*
-
----
-
-## Research Extensions
-* **Quantum-mechanics imaging** – port the same CNN to classify snapshots of **Hubbard-model** simulations (work in progress in my lab notebook).
-* **Sequence models** – replace concatenation with an attention-based recogniser for variable-length digit strings.
-* **Hardware deployment** – convert the Keras model to **TensorFlow Lite** for on-device digit reading (embedded meters / industrial scanners).
-
----
-
-## Citation
-If you use this codebase, please cite:
-
-```bibtex
-@misc{nandi2025twodigcnn,
-  author  = {Poulami Nandi},
-  title   = {Two consecutive Digit Recognition Using Convolutional Neural Network},
-  year    = {2025},
-  url     = {https://github.com/Poulami-Nandi/twoDigRecognizeCNN}
-}
+twoDigRecognizeCNN/
+│
+├── assets/
+│ ├── training_curves.png <- Training/Validation loss plots
+│ ├── sample_output_1.png <- Sample predictions
+│ └── banner.png <- Project banner with name & affiliation
+│
+├── twoDigRecognizeCNN.ipynb <- Full modeling notebook
+├── submission_2d.csv <- Final output for submission
+├── README.md <- This file
 ```
 
 ---
 
-## License
-Distributed under the MIT License (see [`LICENSE`](LICENSE)).
+## 🧠 Model Architecture  
 
+- **Shared Convolutional Backbone**: 3 blocks of Conv2D → ReLU → MaxPool  
+- **Regularization**: Dropout layers after conv and dense blocks  
+- **Two Dense Heads**: Each outputs a prediction for one digit  
+- **Loss Function**: Combined loss using CrossEntropy for each output  
+- **Optimizer**: Adam with learning rate scheduling  
 
+---
 
-# Two consecutive Digit Recognition Using Convolutional Neural Network (CNN)
+## 🔄 Training & Evaluation Strategy  
 
-In this repo, we solve the Kaggle-MNIST Digit Recognizer competition using Convolutional Neural Networks (CNNs).
-This approach leverages the power of CNNs to classify handwritten digit images from the MNIST dataset.
-We'll cover data visualization, preprocessing, model building, training, and evaluation.
-- We take the MNIST single digit dataset and convert that to two digit dataset by horizontal concatenation and run CNN model on that
+- Trained for multiple epochs with stratified shuffling  
+- Tracked accuracy per digit position  
+- Generated a CSV submission format expected for Kaggle-style competition  
+- Used custom PyTorch Dataset and DataLoader classes for loading two-label samples
 
-## Data Loading
-We first load and inspect the training and test datasets.
+---
 
-## Table of Contents
-- [Overview](#overview)
-- [Dataset](#dataset)
-- [Model Architecture](#model-architecture)
-- [Installation](#installation)
-- [Training](#training)
-- [Results](#results)
-- [Contributing](#contributing)
-- [License](#license)
+## 📈 Results & Visuals  
 
-## Overview
-The project uses a CNN model built with TensorFlow/Keras to classify digits in the MNIST dataset. This is a standard deep learning task that provides a solid foundation for understanding neural network models applied to image classification.
+### 🔹 Training Loss Curves  
+<p align="center">
+  <img src="https://github.com/Poulami-Nandi/twoDigRecognizeCNN/blob/main/assets/training_curves.png" width="600"/>
+</p>
 
-## Dataset
-The MNIST dataset consists of 70,000 grayscale images of handwritten digits, where each image is 28x56 pixels in size:
-- **Training set**: 99,000 images
-- **Test set**: 20,000 images
+### 🔹 Prediction Examples  
+<p align="center">
+  <img src="https://github.com/Poulami-Nandi/twoDigRecognizeCNN/blob/main/assets/sample_output_1.png" width="600"/>
+</p>
 
-Each image is labeled from 0 to 99, corresponding to the digit it represents.
+---
 
-## Model Architecture
-The model is a Convolutional Neural Network (CNN) with the following structure:
-1. **Input Layer**: Accepts 28x56 grayscale images
-2. **Convolutional Layers**: Extracts features from the images
-3. **Pooling Layers**: Reduces spatial dimensions
-4. **Fully Connected Layers**: Maps features to digit classes
-5. **Output Layer**: Uses softmax activation for multiclass classification (digits 0-9)
+## 🧾 Submission File Format  
 
-## Installation
+The output CSV format used for submissions is as follows:
 
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/Poulami-Nandi/twoDigRecognizeCNN.git
-   cd twoDigRecognizeCNN
+Id,First Digit,Second Digit
+0,8,2
+1,5,7
+2,1,3
+...
 
-## Results
-Final Training Accuracy: 0.9984
+yaml
+Copy
+Edit
 
-Final Validation Accuracy: 0.9804
+---
 
-Final Training Loss: 0.0051
+## 🚀 Future Work  
 
-Final Validation Loss: 0.0917
+- Integrate ResNet/CNN variants to improve precision  
+- Use data augmentation and regularization tuning  
+- Deploy using Streamlit for live handwritten input inference  
+- Grad-CAM for model interpretability  
+
+---
+
+## 👩‍💻 Author Info  
+
+**Author**: [Dr. Poulami Nandi](https://www.linkedin.com/in/poulami-nandi/)  
+<img src="https://github.com/Poulami-Nandi/IV_surface_analyzer/raw/main/images/own/own_image.jpg" alt="Profile" width="150"/>  
+Physicist · Quant Researcher · Data Scientist  
+[University of Pennsylvania](https://live-sas-physics.pantheon.sas.upenn.edu/people/poulami-nandi) | [IIT Kanpur](https://www.iitk.ac.in/) | [TU Wien](http://www.itp.tuwien.ac.at/CPT/index.htm?date=201838&cats=xbrbknmztwd)
+
+📧 [nandi.poulami91@gmail.com](mailto:nandi.poulami91@gmail.com), [pnandi@sas.upenn.edu](mailto:pnandi@sas.upenn.edu)  
+🔗 [LinkedIn](https://www.linkedin.com/in/poulami-nandi-a8a12917b/) • [GitHub](https://github.com/Poulami-Nandi) • [Google Scholar](https://scholar.google.co.in/citations?user=bOYJeAYAAAAJ&hl=en)
+
+---
+
+## 📝 License  
+
+This project is licensed under the MIT License. See [LICENSE](https://github.com/Poulami-Nandi/twoDigRecognizeCNN/blob/main/LICENSE) for details.
+
+---
+
+## 🙏 Acknowledgments  
+
+- Kaggle platform for dataset  
+- PyTorch community for tutorials  
+- Open source community contributors
+
+---
