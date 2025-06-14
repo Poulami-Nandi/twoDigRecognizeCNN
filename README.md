@@ -57,7 +57,10 @@ twoDigRecognizeCNN/
 - **Two Dense Heads**: Each outputs a prediction for one digit  
 - **Loss Function**: Combined loss using CrossEntropy for each output  
 - **Optimizer**: Adam with learning rate scheduling  
-
+### 🔹 Model Architecture Diagram  
+<p align="center">
+  <img src="https://github.com/Poulami-Nandi/twoDigRecognizeCNN/blob/main/assets/model_architecture.png" width="600"/>
+</p>
 ---
 
 ## 🔄 Training & Evaluation Strategy  
@@ -123,6 +126,16 @@ Id,First Digit,Second Digit
 1,5,7
 2,1,3
 ...
+
+---
+### 📊 Final Model Performance
+
+| Metric                   | Value     |
+|--------------------------|-----------|
+| Final Training Accuracy  | **0.9984** |
+| Final Validation Accuracy| **0.9804** |
+| Final Training Loss      | **0.0051** |
+| Final Validation Loss    | **0.0917** |
 
 ---
 
