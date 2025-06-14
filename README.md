@@ -1,8 +1,3 @@
-<!-- Banner -->
-<p align="center">
-  <img src="https://github.com/Poulami-Nandi/twoDigRecognizeCNN/blob/main/assets/banner.png" alt="Dr. Poulami Nandi Banner" width="100%" />
-</p>
-
 <h1 align="center">🧠 Two Digit Recognition using Convolutional Neural Network (CNN)</h1>
 
 <p align="center">
@@ -53,7 +48,6 @@ twoDigRecognizeCNN/
 ```
 
 ---
-
 ## 🧠 Model Architecture  
 
 - **Shared Convolutional Backbone**: 3 blocks of Conv2D → ReLU → MaxPool  
@@ -72,6 +66,37 @@ twoDigRecognizeCNN/
 - Used custom PyTorch Dataset and DataLoader classes for loading two-label samples
 
 ---
+
+## Inside the Notebook
+| Section | Highlights | Figure |
+|---------|------------|--------|
+| **EDA & Visualisation** | pixel-intensity histograms, class balance | ![EDA](assets/image_4.png) |
+| **Data Pipeline** | NumPy stacks → `tf.data.Dataset` → on-the-fly augmentation | ![Pipeline](assets/image_5.png) |
+| **Training** | `ReduceLROnPlateau`, `ModelCheckpoint`, `TensorBoard` callbacks | ![Training](assets/image_6.png) |
+| **Error Analysis** | visualise top-k mis-classifications | ![Errors](assets/image_7.png) |
+
+*(12 additional figures are stored in `assets/` for reference.)*
+
+---
+
+## Research Extensions
+* **Quantum-mechanics imaging** – port the same CNN to classify snapshots of **Hubbard-model** simulations (work in progress in my lab notebook).
+* **Sequence models** – replace concatenation with an attention-based recogniser for variable-length digit strings.
+* **Hardware deployment** – convert the Keras model to **TensorFlow Lite** for on-device digit reading (embedded meters / industrial scanners).
+
+---
+
+## Citation
+If you use this codebase, please cite:
+
+```bibtex
+@misc{nandi2025twodigcnn,
+  author  = {Poulami Nandi},
+  title   = {Two consecutive Digit Recognition Using Convolutional Neural Network},
+  year    = {2025},
+  url     = {https://github.com/Poulami-Nandi/twoDigRecognizeCNN}
+}
+```
 
 ## 📈 Results & Visuals  
 
@@ -96,10 +121,6 @@ Id,First Digit,Second Digit
 1,5,7
 2,1,3
 ...
-
-yaml
-Copy
-Edit
 
 ---
 
