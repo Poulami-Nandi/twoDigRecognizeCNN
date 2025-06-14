@@ -38,7 +38,8 @@ This project develops a robust Convolutional Neural Network (CNN) to recognize *
 twoDigRecognizeCNN/
 ├── assets/
 │   ├── training_curves.png
-│   ├── sample_output_1.png
+│   ├── model_architecture.png
+│   ├── prediction_vs_actual_two_digits.png
 ├── LICENSE
 ├── README.md
 ├── digit-recognizer.zip
@@ -111,9 +112,9 @@ If you use this codebase, please cite:
   <img src="https://github.com/Poulami-Nandi/twoDigRecognizeCNN/blob/main/assets/training_curves.png" width="600"/>
 </p>
 
-### 🔹 Prediction Examples  
+### 🔹 Prediction Examples with two digits  
 <p align="center">
-  <img src="https://github.com/Poulami-Nandi/twoDigRecognizeCNN/blob/main/assets/sample_output_1.png" width="600"/>
+  <img src="https://github.com/Poulami-Nandi/twoDigRecognizeCNN/blob/main/assets/prediction_vs_actual_two_digits.png" width="600"/>
 </p>
 
 ---
