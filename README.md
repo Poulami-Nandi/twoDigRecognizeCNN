@@ -39,6 +39,8 @@ twoDigRecognizeCNN/
 ├── assets/
 │   ├── training_curves.png
 │   ├── model_architecture.png
+│   ├── eda_2_digits.png
+|   ├── training_validation_acc.png
 │   ├── prediction_vs_actual_two_digits.png
 ├── LICENSE
 ├── README.md
@@ -77,9 +79,9 @@ twoDigRecognizeCNN/
 ## Inside the Notebook
 | Section | Highlights | Figure |
 |---------|------------|--------|
-| **EDA & Visualisation** | pixel-intensity histograms, class balance | ![EDA](assets/image_4.png) |
+| **EDA & Visualisation** | pixel-intensity histograms, class balance | ![EDA](assets/eda_2_digits.png) |
 | **Data Pipeline** | NumPy stacks → `tf.data.Dataset` → on-the-fly augmentation | ![Pipeline](assets/image_5.png) |
-| **Training** | `ReduceLROnPlateau`, `ModelCheckpoint`, `TensorBoard` callbacks | ![Training](assets/image_6.png) |
+| **Training** | `ReduceLROnPlateau`, `ModelCheckpoint`, `TensorBoard` callbacks | ![Training](assets/training_validation_acc.png) |
 | **Error Analysis** | visualise top-k mis-classifications | ![Errors](assets/image_7.png) |
 
 *(12 additional figures are stored in `assets/` for reference.)*
@@ -109,7 +111,7 @@ If you use this codebase, please cite:
 
 ### 🔹 Training Loss Curves  
 <p align="center">
-  <img src="https://github.com/Poulami-Nandi/twoDigRecognizeCNN/blob/main/assets/training_curves.png" width="600"/>
+  <img src="https://github.com/Poulami-Nandi/twoDigRecognizeCNN/blob/main/assets/training_loss_curves.png" width="600"/>
 </p>
 
 ### 🔹 Prediction Examples with two digits  
