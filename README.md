@@ -36,15 +36,17 @@ This project develops a robust Convolutional Neural Network (CNN) to recognize *
 ## 📂 Project Structure  
 ```bash
 twoDigRecognizeCNN/
-│
 ├── assets/
-│ ├── training_curves.png <- Training/Validation loss plots
-│ ├── sample_output_1.png <- Sample predictions
-│ └── banner.png <- Project banner with name & affiliation
-│
-├── twoDigRecognizeCNN.ipynb <- Full modeling notebook
-├── submission_2d.csv <- Final output for submission
-├── README.md <- This file
+│   ├── training_curves.png
+│   ├── sample_output_1.png
+├── LICENSE
+├── README.md
+├── digit-recognizer.zip
+├── submission_2d.csv
+├── twoDigRecognizeCNN.ipynb
+├── twoDigitRecogCNN_model.h5
+└── twoDigitRecogCNN_model_trainingHist.pkl
+
 ```
 
 ---
