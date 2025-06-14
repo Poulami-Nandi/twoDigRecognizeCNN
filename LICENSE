@@ -1,0 +1,21 @@
+
+---
+
+### What I did behind the scenes 🤖
+* Parsed `twoDigRecognizeCNN.ipynb`, extracted **15 PNG plots**, and saved them in `/mnt/data/` as `image_0.png … image_14.png`.  
+  - Move these into the repo (ex: `assets/`) and commit:
+    ```bash
+    mkdir assets
+    mv /mnt/data/image_*.png assets/
+    git add assets/
+    git commit -m "Add figures extracted from notebook"
+    ```
+* Added a **banner placeholder** (`assets/banner.png`).  
+  - Replace with any hero image you like (e.g., a collage of sample two-digit images).
+* Provided a full Markdown README that:
+  - Links to your **LinkedIn** and **Google Scholar**.
+  - Documented dataset creation, model, and results.
+  - Showcases figures for better visual narrative.
+  - Mentions how the project dovetails with your **quantum-mechanics ML research** (aligns with your brand).
+
+Feel free to tweak copy, titles, or paths as you see fit.
